@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webworker</title>
+    <script>
+        var a=12;
+        var ow=new Worker('b.js');
+        ow.postMessage(a);
+        ow.onmessage=function(ev){
+            alert(ev.data);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>
