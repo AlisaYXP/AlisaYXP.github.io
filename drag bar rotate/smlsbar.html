@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bar</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        html{
+            font-size: 20px;
+        }
+        #box{
+            overflow: hidden;
+            width: 16rem;
+            height: 7.5rem;
+        }
+        ul{
+            width: 96rem;
+
+            overflow: hidden;
+            transform:translateX(-16rem);
+        }
+        ul li{
+            width: 16rem;
+            height: 7.5rem;
+            float: left;
+            line-height: 7.5rem;
+            text-align: center;
+            color: #fff;
+            font-size: 2.5rem;
+        }
+        ul .l1{
+            background:red;
+        }
+        ul .l2{
+            background:blue;
+        }
+        ul .l3{
+            background:yellow;
+        }
+        ul .l4{
+            background:aqua;
+        }
+    </style>
+    <script>
+        (function(window,document){
+            function change(){
+                document.documentElement.style.fontSize=20*document.documentElement.clientWidth/320+'px';
+            }
+            change();
+            window.addEventListener('resize',change,false);
+
+        })(window,document);
+        document.addEventListener('DOMContentLoaded',function(){
+            var oUl=document.querySelector('ul');
+            var aLi=oUl.children;
+            var iNow=1;
+            var x=-iNow*aLi[0].offsetWidth;
+            var bReady=true;
+            oUl.addEventListener('touchstart',function(ev){
+                if(bReady==false){return;}
+                oUl.style.transition='none';
+                var downX=ev.targetTouches[0].pageX;
+                var disX=downX-x;
+                function fnMove(ev){
+                    x=ev.targetTouches[0].pageX-disX;
+                    oUl.style.transform='translateX('+x+'px)';
+                    oUl.style.WebkitTransform='translateX('+x+'px)';
+                }
+                function fnEnd(ev){
+                    oUl.style.transition='.4s all ease';
+                    var upX=ev.changedTouches[0].pageX;
+                    if(Math.abs(upX-downX)>50){
+                        if(downX>upX){
+                            iNow++;
+                            if(iNow==aLi.length){
+                                iNow=aLi.length-1;
+                            }
+                        }else{
+                            iNow--;
+                            if(iNow==-1){
+                                iNow=0;
+                            }
+                        }
+                    }
+                    x=-iNow*aLi[0].offsetWidth;
+                    oUl.style.transform='translateX('+x+'px)';
+                    oUl.style.WebkitTransform='translateX('+x+'px)';
+                    function tEnd(){
+                        bReady=true;
+                        oUl.style.transition='none';
+                        if(iNow==aLi.length-1){
+                            iNow=1;
+                        }
+                        if(iNow==0){
+                            iNow=aLi.length-2;
+                        }
+                        x=-iNow*aLi[0].offsetWidth;
+                        oUl.style.transform='translateX('+x+'px)';
+                        oUl.style.WebkitTransform='translateX('+x+'px)';
+                    }
+                    oUl.addEventListener('transitionend',tEnd,false);
+                    document.removeEventListener('touchmove',fnMove,false);
+                    document.removeEventListener('touchend',fnEnd,false);
+                }
+                document.addEventListener('touchmove',fnMove,false);
+                document.addEventListener('touchend',fnEnd,false);
+                ev.preventDefault();
+            },false);
+        },false);
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li class="l4">4</li>
+            <li class="l1">1</li>
+            <li class="l2">2</li>
+            <li class="l3">3</li>
+            <li class="l4">4</li>
+            <li class="l1">1</li>
+        </ul>
+    </div>
+</body>
+</html>

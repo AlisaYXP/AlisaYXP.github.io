@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>news</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body,html{
+            height: 100%;
+            font-size: 20px;
+        }
+        #wrap{
+            width: 100%;
+            overflow: hidden;
+        }
+        #wrap #header,#wrap #footer{
+            height: 40px;
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            color: #333;
+            background: #390;
+        }
+        #box{
+            width: 400%;
+            overflow: hidden;
+        }
+        #box dl{
+            width: 25%;
+            text-align: center;
+            float: left;
+        }
+        #box dl dt{
+             background: #ccc;
+             height: 40px;
+            line-height: 40px;
+         }
+        #box dl dd{
+            height: 30px;
+            line-height: 30px;
+            border: 1px dashed #999;
+        }
+        #wrap #footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+        }
+        #refresh{
+            text-align: center;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var oBox=document.querySelector('#box');
+            var oRe=document.querySelector('#refresh');
+            var aDl=oBox.children;
+            var x=0;
+            var y=0;
+            var iNow=0;
+            var dir='';
+            oBox.addEventListener('touchstart',function(ev){
+                oBox.style.transition='none';
+                var downX=ev.targetTouches[0].pageX;
+                var downY=ev.targetTouches[0].pageY;
+                var disX=downX-x;
+                var disY=downY-y;
+                function fnMove(ev){
+                    var moveX=ev.targetTouches[0].pageX;
+                    var moveY=ev.targetTouches[0].pageY;
+                    if(dir){
+                        if(dir=='lr'){
+                            x=moveX-disX;
+                            oBox.style.transform='translate('+x+'px,'+y+'px)';
+                            oBox.style.WebkitTransform='translate('+x+'px,'+y+'px)';
+                        }else if(dir=='top'){
+                            y=moveY-disY;
+                            y>80&&(y=80);
+                            oRe.style.height=y+'px';
+                        }
+                    }else{
+                        if(Math.abs(downX-moveX)>50){
+                            dir='lr';
+                        }else if((moveY-downY)>50){
+                            dir='top';
+                        }
+                    }
+                }
+                function fnEnd(ev){
+                    oBox.style.transition='1s all ease';
+                    var upX=ev.changedTouches[0].pageX;
+                    if(dir=='top'){
+                        y=0;
+                        oRe.style.height=0;
+                        oRe.style.transition='1s all ease';
+                    }else if(dir=='lr'){
+                        if(Math.abs(upX-downX)>50){
+                            if(upX>downX){
+                                iNow--;
+                                if(iNow==-1){
+                                    iNow=0;
+                                }
+                            }else{
+                                iNow++;
+                                if(iNow==aDl.length){
+                                    iNow=aDl.length-1;
+                                }
+                            }
+                        }
+                        x=-aDl[0].offsetWidth*iNow;
+                        oBox.style.transform='translate('+x+'px,'+y+'px)';
+                    }
+                    document.removeEventListener('touchmove',fnMove,false);
+                    document.removeEventListener('touchend',fnEnd,false);
+                    dir='';
+                }
+                document.addEventListener('touchmove',fnMove,false);
+                document.addEventListener('touchend',fnEnd,false);
+                ev.preventDefault();
+            },false);
+        },false);
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">header</header>
+        <section>
+            <div id="refresh">
+                <img src="roller.gif" />
+                <span>下载刷新</span>
+            </div>
+            <div id="box">
+                <dl>
+                    <dt>新闻1</dt>
+                    <dd>00001</dd>
+                    <dd>00002</dd>
+                    <dd>00003</dd>
+                    <dd>00004</dd>
+                    <dd>00005</dd>
+                    <dd>00006</dd>
+                    <dd>00007</dd>
+                    <dd>00008</dd>
+                    <dd>00009</dd>
+                    <dd>00010</dd>
+                </dl>
+                <dl>
+                    <dt>新闻2</dt>
+                    <dd>00001</dd>
+                    <dd>00002</dd>
+                    <dd>00003</dd>
+                    <dd>00004</dd>
+                    <dd>00005</dd>
+                    <dd>00006</dd>
+                    <dd>00007</dd>
+                    <dd>00008</dd>
+                    <dd>00009</dd>
+                    <dd>00010</dd>
+                </dl>
+                <dl>
+                    <dt>新闻3</dt>
+                    <dd>00001</dd>
+                    <dd>00002</dd>
+                    <dd>00003</dd>
+                    <dd>00004</dd>
+                    <dd>00005</dd>
+                    <dd>00006</dd>
+                    <dd>00007</dd>
+                    <dd>00008</dd>
+                    <dd>00009</dd>
+                    <dd>00010</dd>
+                </dl>
+                <dl>
+                    <dt>新闻4</dt>
+                    <dd>00001</dd>
+                    <dd>00002</dd>
+                    <dd>00003</dd>
+                    <dd>00004</dd>
+                    <dd>00005</dd>
+                    <dd>00006</dd>
+                    <dd>00007</dd>
+                    <dd>00008</dd>
+                    <dd>00009</dd>
+                    <dd>00010</dd>
+                </dl>
+            </div>
+        </section>
+        <footer id="footer">footer</footer>
+    </div>
+</body>
+</html>

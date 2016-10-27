@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rotate</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            margin: 50px auto;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var oDiv=document.querySelector('#div1');
+            function a2d(n){
+                return n*180/Math.PI;
+            }
+            function getD(ev){
+                var x1=oDiv.offsetLeft+oDiv.offsetWidth/2;
+                var y1=oDiv.offsetTop+oDiv.offsetHeight/2;
+                var x2=ev.targetTouches[0].pageX;
+                var y2=ev.targetTouches[0].pageY;
+                var x=x2-x1;
+                var y=y1-y2;
+                return a2d(Math.atan2(y,x));
+            }
+            var d=0;
+            oDiv.addEventListener('touchstart',function(ev){
+                var oldD=d;
+                var downD=getD(ev);
+                function fnMove(ev){
+                    d=oldD+downD-getD(ev);
+                    oDiv.style.transform='rotate('+d+'deg)';
+                    oDiv.style.WebkitTransform='rotate('+d+'deg)';
+                }
+                function fnEnd(){
+                    oDiv.innerHTML=d;
+                    document.removeEventListener('touchmove',fnMove,false);
+                    document.removeEventListener('touchend',fnEnd,false);
+                }
+                document.addEventListener('touchmove',fnMove,false);
+                document.addEventListener('touchend',fnEnd,false);
+                //ev.preventDefault();
+            },false);
+        },false);
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
