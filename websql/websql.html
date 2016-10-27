@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>websql</title>
+    <script>
+        //创建一个数据库
+        var db = openDatabase('db2','1.0.1','play and test',200);
+        db.transaction(function(tx){
+            //建表
+            tx.executeSql('CREATE table happy(title TEXT,href TEXT)');
+            //插入数据
+            tx.executeSql('INSERT INTO happy VALUES("aaa","bbb")');
+            //查找数据
+            tx.executeSql('SELECT * from happy',[],function(tx,res){
+                console.log(res.rows.length);
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
