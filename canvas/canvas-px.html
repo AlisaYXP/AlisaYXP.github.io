@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+        }
+        #c1{
+            background: #fff;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oC=document.getElementById('c1');
+            var gd=oC.getContext('2d');
+            var oImg=new Image();
+            oImg.src='素材/dbg.jpg';
+            oImg.onload=function(){
+                gd.drawImage(oImg,0,0);
+//                gd.drawImage(oImg,
+//                    sx,sy,sw,sh,
+//                    dx,dy,dw,dh
+//                );
+                var result=gd.getImageData(0,0,oC.width,oC.height);
+                var d=result.data;
+                for(var i=0;i< d.length;i+=4){
+                    d[i]=d[i+1]=d[i+2];
+                }
+                gd.putImageData(result,0,0);
+            };
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

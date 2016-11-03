@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas-lineJoin</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+        }
+        #c1{
+            background: #fff;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oC=document.getElementById('c1');
+            var gd=oC.getContext('2d');
+            //gd.lineJoin='bevel';
+            gd.lineJoin='round';
+           // gd.moveTo(100,100);
+           // gd.lineTo(100,200);
+            //gd.lineTo(200,400);
+            gd.lineWidth=20;
+            gd.strokeRect(200,200,200,200);
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="1000" height="500"></canvas>
+</body>
+</html>

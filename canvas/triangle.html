@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+        }
+        #c1{
+            background: #fff;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oC=document.getElementById('c1');
+            var gd=oC.getContext('2d');
+            gd.moveTo(173,89);
+            gd.lineTo(274,308);
+            gd.lineTo(75,306);
+            gd.closePath();
+            gd.lineWidth=10;
+            gd.fillStyle='green';
+            //填充上颜色
+            gd.fill();
+            gd.strokeStyle='red';
+            gd.stroke();
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="1000" height="500">亲，您该换浏览器了</canvas>
+</body>
+</html>

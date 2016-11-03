@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>isPointInPath</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background: #000;
+        }
+        #c1{
+            background: #fff;
+        }
+    </style>
+    <script>
+        function d2a(n){
+            return n*Math.PI/180;
+        }
+        window.onload=function(){
+            var oC=document.getElementById('c1');
+            var gd=oC.getContext('2d');
+            gd.arc(200,200,100,d2a(0),d2a(360),false);
+            gd.fill();
+            oC.onclick=function(ev){
+                if(gd.isPointInPath(ev.clientX,ev.clientY)){
+                    alert(1);
+                }else{
+                    alert(2);
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="1000" height="500"></canvas>
+</body>
+</html>
