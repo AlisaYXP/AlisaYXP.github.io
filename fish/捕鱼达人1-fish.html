@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fish</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+            text-align: center;
+        }
+        #c1{
+            margin-top: 20px;
+            background:url("img/game_bg_2_hd.jpg");
+        }
+    </style>
+    <script src="js/com.js"></script>
+    <script src="js/resource.js"></script>
+    <script>
+        //各种鱼的尺寸
+        var FISH_SIZE=[
+            null,
+            {w: 55, h: 37},
+            {w: 78, h: 64},
+            {w: 72, h: 56},
+            {w: 77, h: 59},
+            {w: 107, h: 122}
+        ];
+        //鱼的构造函数-属性
+        function Fish(type){
+            this.type=type;
+            this.x=0;
+            this.y=0;
+            this.cur=0;//鱼尾游动
+            this.iSpeed=1;
+            this.rotate=120;
+            this.move();
+        }
+        //鱼的游动
+        Fish.prototype.move=function(){
+            var _this=this;
+            //鱼尾的游动
+            setInterval(function(){
+                _this.cur++;
+                if(_this.cur==4){
+                    _this.cur=0;
+                }
+            },200);
+            //根据鱼游动的角度和速度确定鱼的位置xy
+            setInterval(function(){
+                _this.x+=_this.iSpeed*Math.cos(d2a(_this.rotate));
+                _this.y+=_this.iSpeed*Math.sin(d2a(_this.rotate));
+            },16);
+        };
+        //画鱼
+        Fish.prototype.draw=function(gd){
+            var w=FISH_SIZE[this.type].w;
+            var h=FISH_SIZE[this.type].h;
+            gd.save();
+            gd.translate(this.x,this.y);
+            gd.rotate(d2a(this.rotate));
+            //修复阴影
+            if(this.rotate>90&&this.rotate<270){
+                gd.scale(1,-1);
+            }
+            gd.drawImage(JSON['fish'+this.type],
+                0,h*this.cur,w,h,
+                -w/2,-h/2,w,h
+            );
+            gd.restore();
+        };
+        document.addEventListener('DOMContentLoaded',function(){
+            var oC=document.getElementById('c1');
+            var gd=oC.getContext('2d');
+            loadImage(resource,function(){
+                gd.drawImage(JSON['fish1'],0,0);
+                var f1=new Fish(5);
+                f1.x=800;
+                f1.y=0;
+                setInterval(function(){
+                    gd.clearRect(0,0,oC.width,oC.height);
+                    gd.save();
+                    f1.draw(gd);
+                    gd.restore();
+                },16);
+            });
+        },false);
+    </script>
+</head>
+<body>
+    <canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
