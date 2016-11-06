@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>user</title>
+<script src="cookie.js"></script>
+<script>
+	window.onload=function(){
+		var oTxt=document.getElementById('txt');
+		var oBtn=document.getElementById('btn');
+		if(getCookie('user')){
+			oBtn.checked=true;
+			oTxt.value=getCookie('user');
+		}
+		oBtn.onclick=function(){
+			if(this.checked){
+				addCookie('user',oTxt.value)
+			}else{
+				removeCookie('user');	
+			}
+		};	
+	};
+</script>
+</head>
+
+<body>
+	<input type="text" id="txt" />
+    <input type="checkbox" id="btn" />记住我
+</body>
+</html>

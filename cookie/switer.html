@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>switer</title>
+<style>
+	*{
+		margin:0;
+		padding:0;	
+	}
+	#box div{
+		width:200px;
+		height:200px;
+		background:#ccc;
+		display:none;	
+	}
+	.on{
+		background:red;
+	}
+	#box .active{
+		display:block;
+	}
+</style>
+<script src="cookie.js"></script>
+<script>
+	window.onload=function(){
+		var oBox=document.getElementById('box');
+		var aBtn=document.getElementsByTagName('input');
+		var aDiv=oBox.getElementsByTagName('div');
+		var iNow=getCookie('iNow')||0;
+		if(iNow){
+			tab();
+		}
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].index=i;
+			aBtn[i].onclick=function(){
+				iNow=this.index;
+				addCookie('iNow',iNow);
+				tab();
+			};
+		}
+		function tab(){
+			for(var i=0;i<aBtn.length;i++){
+					aBtn[i].className='';
+					aDiv[i].className='';
+			}
+			aBtn[iNow].className='on';
+			aDiv[iNow].className='active';	
+		}	
+	};
+</script>
+</head>
+
+<body>
+	<div id="box">
+    	<input type="button" value="aaa" class="on" />
+        <input type="button" value="bbb" />
+        <input type="button" value="ccc" />
+        <div class="active">111</div>
+        <div>222</div>
+        <div>333</div>
+    </div>
+</body>
+</html>
