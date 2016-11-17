@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yanxiaopei</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            background: #000;
+            width: 100%;
+            height: 100%;
+        }
+        #c1{
+            background: #000;
+        }
+    </style>
+    <script>
+        function rnd(m,n){
+            return Math.floor(m+Math.random()*(n-m));
+        }
+        window.onload=function(){
+            var oC=document.getElementById('c1');
+            var gd=oC.getContext('2d');
+            var N=5;
+            var aPoint=[];
+            var LEN=100;
+            var oldArr=[];
+            var winW=document.documentElement.clientWidth;
+            var winH=document.documentElement.clientHeight;
+            oC.width=winW;
+            oC.height=winH;
+            //console.log(winH);
+            for(var i=0;i<N;i++){
+                aPoint[i]={
+                    x:rnd(0,winW),
+                    y:rnd(0,winH),
+                    iSpeedX:rnd(-10,10),
+                    iSpeedY:rnd(-10,10)
+                };
+            }
+            //console.log(aPoint);
+            function draw(p){
+                var pw=1;
+                var ph=1;
+                gd.fillStyle='#fff';
+                gd.fillRect(p.x-pw/2,p.y-ph/2,pw,ph);
+            }
+            setInterval(function(){
+                gd.clearRect(0,0,winW,winH);
+                for(var i=0;i<aPoint.length;i++){
+                    aPoint[i].x+=aPoint[i].iSpeedX;
+                    aPoint[i].y+=aPoint[i].iSpeedY;
+                    if(aPoint[i].x<0){
+                        aPoint[i].x=0;
+                        aPoint[i].iSpeedX*=-1;
+                    }
+                    if(aPoint[i].x>winW){
+                        aPoint[i].x=winW;
+                        aPoint[i].iSpeedX*=-1;
+                    }
+                    if(aPoint[i].y<0){
+                        aPoint[i].y=0;
+                        aPoint[i].iSpeedY*=-1;
+                    }
+                    if(aPoint[i].y>winH){
+                        aPoint[i].y=winH;
+                        aPoint[i].iSpeedY*=-1;
+                    }
+                    draw(aPoint[i]);
+                }
+                var arr=[];
+                for(var i=0;i<aPoint.length;i++){
+                    arr[i]={
+                        x:aPoint[i].x,
+                        y:aPoint[i].y
+                    };
+                }
+                oldArr.push(arr);
+                console.log(oldArr);
+                if(oldArr.length>LEN){
+                    oldArr.shift();
+                }
+                for(var i=0;i<oldArr.length;i++){
+                    gd.beginPath();
+                    var opa=i/LEN;
+                    gd.moveTo(oldArr[i][0].x,oldArr[i][0].y);
+                    for(var j=0;j<oldArr[i].length;j++){
+                        gd.lineTo(oldArr[i][j].x,oldArr[i][j].y);
+                    }
+                    gd.closePath();
+                    gd.strokeStyle='rgba(255,255,255,'+opa+')';
+                    gd.stroke();
+                }
+            },16);
+        };
+    </script>
+</head>
+<body>
+    <canvas id="c1"></canvas>
+</body>
+</html>
