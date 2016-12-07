@@ -1,0 +1,441 @@
+html,body{
+    font-size: 20px;
+}
+.oHeader{
+    width:100%;
+    height:2.2rem;
+    font-size:0.825rem;
+    background: #000;
+    text-align: center;
+    line-height:2.2rem;
+    color: #ffffff;
+    float: left;
+    position: relative;
+}
+.oNav{
+    width:1.125rem;
+    height:0.8rem;
+    background: #000;
+    position: absolute;
+    left: 1.35rem;
+    top:0.8rem;
+}
+.oNav span{
+    width:1.125rem;
+    height: 0.1rem;
+    margin-bottom:0.25rem;
+    background: #ffffff;
+    float: left;
+}
+.oneSec{
+    background:url("../banner.jpg") no-repeat;
+    width:100%;
+    height:20rem;
+    float: left;
+    background-size:100%;
+    position: relative;
+}
+.oneSec span{
+    font-size:0.875rem;
+    color: #ffffff;
+    position: absolute;
+    left:1.75rem;
+    top:10.75rem;
+}
+.oneSec i{
+    width:14.15rem;
+    height:2.1rem;
+    position: absolute;
+    left:1.75rem;
+    top:12.4rem;
+    font-size:1.625rem;
+    color: #ffffff;
+    line-height:2.15rem;
+}
+.oneSec i b{
+    float: left;
+    width:7.8rem;
+    height:2.1rem;
+    background:#ce0d20;
+    color: #ffffff;
+    text-align: center;
+    line-height:2.1rem;
+    font-size:1.625rem;
+    margin-right:0.65rem;
+}
+.ozSec{
+    width:100%;
+    height:12.5rem;
+    float: left;
+    position: relative;
+}
+.ozSec i{
+    width:1.1rem;
+    height:0.95rem;
+    position: absolute;
+    left:1.35rem;
+    top:2.25rem;
+    font-size:1rem;
+    color: #e92032;
+}
+.ozSec b{
+    width:4.8rem;
+    height:1.2rem;
+    color: #323232;
+    font-size:1.2rem;
+    position: absolute;
+    left:3.3rem;
+    top:2.1rem;
+}
+.ozSec em{
+    width:2.15rem;
+    height:0.2rem;
+    background: #fe0000;
+    position: absolute;
+    left:3.3rem;
+    top:4rem;
+}
+.ozSec span{
+    width:12.35rem;
+    height:8.35rem;
+    font-size:0.7rem;
+    color: #474747;
+    line-height:1.2rem;
+    padding-top:0.9rem;
+    position: absolute;
+    right:1.5rem;
+    top:4.2rem;
+
+}
+.ooSec{
+    width:100%;
+    height:10rem;
+    float: left;
+    background: #fafafa;
+    overflow: hidden;
+    position: relative;
+}
+.ooSec div{
+    position:absolute;
+    left:0; top:0;
+    -webkit-transform: translate3d(-16rem,0,0);
+}
+.ooSec div ul{
+    float: left;
+    width:16rem;
+}
+.ooSec svg{
+    width:100%;
+    height:1.7rem;
+    float: left;
+    margin-bottom:1.2rem;
+    text-align: center;
+}
+.ooSec li{
+    float: left;
+    margin-top:2.15rem;
+}
+.ooSec li:nth-child(1){
+    width:2.925rem;
+    height:5.75rem;
+    margin-left:2rem;
+}
+.ooSec li:nth-child(1) p{
+    float: left;
+    font-size:0.7rem;
+    color: #474747;
+    margin-bottom:0.4rem;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(1) i{
+    float: left;
+    font-size:0.5rem;
+    color: #999999;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(1) b{
+    float: left;
+    font-size:0.5rem;
+    color: #999999;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(2){
+    width:2.925rem;
+    height:5.75rem;
+    margin-left:2rem;
+}
+.ooSec li:nth-child(2) p{
+    float: left;
+    font-size:0.7rem;
+    color: #474747;
+    margin-bottom:0.4rem;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(2) i{
+    float: left;
+    font-size:0.5rem;
+    color: #999999;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(2) b{
+    float: left;
+    font-size:0.5rem;
+    color: #999999;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(3){
+    width:3.45rem;
+    height:5.75rem;
+    margin-left:1.8rem;
+}
+.ooSec li:nth-child(3) p{
+    float: left;
+    font-size:0.7rem;
+    color: #474747;
+    margin-bottom:0.4rem;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(3) i{
+    float: left;
+    font-size:0.5rem;
+    color: #999999;
+    width: 100%;
+    text-align: center;
+}
+.ooSec li:nth-child(3) b{
+    float: left;
+    font-size:0.5rem;
+    color: #999999;
+    width: 100%;
+    text-align: center;
+}
+.otSec{
+    width:100%;
+    height:15.25rem;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+.otSec i{
+    width:1.1rem;
+    height:0.95rem;
+    position: absolute;
+    left:1.35rem;
+    top:2.25rem;
+    font-size:1rem;
+    color: #e92032;
+}
+.otSec b{
+    width:11.2rem;
+    height:1.2rem;
+    color: #323232;
+    font-size:1.2rem;
+    position: absolute;
+    left:3.3rem;
+    top:2.1rem;
+}
+.otSec em{
+    width:2.15rem;
+    height:0.2rem;
+    background: #fe0000;
+    position: absolute;
+    left:3.3rem;
+    top:4rem;
+}
+.otSec span{
+    width:12.35rem;
+    height:9.45rem;
+    font-size:0.7rem;
+    color: #474747;
+    line-height:1.2rem;
+    padding-top:0.9rem;
+    position: absolute;
+    right: 1.5rem;
+    top:4.2rem;
+}
+.othSec{
+    width:100%;
+    height:29.8rem;
+    float: left;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+.othSec i{
+    width:1.1rem;
+    height:0.95rem;
+    position: absolute;
+    left:1.35rem;
+    top:1.55rem;
+    font-size:1rem;
+    color: #fff;
+}
+.othSec b{
+    width:11.2rem;
+    height:1.2rem;
+    color: #fff;
+    font-size:1.2rem;
+    position: absolute;
+    left:3.3rem;
+    top:1.45rem;
+}
+.othSec em{
+    width:2.15rem;
+    height:0.2rem;
+    background: #fff;
+    position: absolute;
+    left:3.3rem;
+    top:3.4rem;
+}
+.othSec span{
+    width:12.35rem;
+    height:14.25rem;
+    font-size:0.7rem;
+    color: #fff;
+    line-height:1.2rem;
+    padding-top:0.9rem;
+    position: absolute;
+    right: 1.5rem;
+    top:3.6rem;
+}
+.othSec div{
+    width: 100%;
+    height:10.15rem;
+    position: absolute;
+    left:1rem;
+    top:17.9rem;
+    text-align:center;
+    line-height:10.15rem;
+}
+.othSec video{
+    width:14rem;
+    height:10.15rem;
+}
+.othSec strong{
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-1.15rem;
+    margin-top:-1.15rem;
+    width:2.3rem;
+    height:2.3rem;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    background: #000;
+    opacity:0.7;
+    text-align: center;
+    line-height:2.1rem;
+    color: #ffffff;
+    font-size:1rem;
+}
+.othSec .p1{
+    display: block;
+}
+.othSec .p2{
+    display: none;
+}
+.ofSec{
+    width:100%;
+    height:21.3rem;
+    float: left;
+    position: relative;
+}
+.ofSec i{
+    width:1.1rem;
+    height:0.95rem;
+    position: absolute;
+    left:1.35rem;
+    top:1.95rem;
+    font-size:1rem;
+    color: #000;
+}
+.ofSec b{
+    width:11.2rem;
+    height:1.2rem;
+    color: #000;
+    font-size:1.2rem;
+    position: absolute;
+    left:3.3rem;
+    top:2rem;
+}
+.ofSec em{
+    width:2.15rem;
+    height:0.2rem;
+    background:#fe0000;
+    position: absolute;
+    left:3.3rem;
+    top:3.8rem;
+}
+.ofSec p{
+    width:12.5rem;
+    height:0.75rem;
+    position: absolute;
+    right: 1.5rem;
+    top:5.3rem;
+    font-size:0.7rem;
+}
+.ofSec strong{
+    width:12.5rem;
+    height:0.2rem;
+    position: absolute;
+    right: 1.5rem;
+    top:6.45rem;
+    font-size:0.7rem;
+}
+.ofSec span{
+    width:12.5rem;
+    height:0.2rem;
+    position: absolute;
+    right: 1.5rem;
+    top:7.6rem;
+    font-size:0.7rem;
+}
+.box{
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity:0.7;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index:20;
+    display: none;
+}
+.oBox{
+    width:10rem;
+    height:10rem;
+    position: fixed;
+    left:50%;
+    top:50%;
+    margin-left:-5rem;
+    margin-top:-5rem;
+    z-index:50;
+    display: none;
+}
+.oBox li{
+    float: left;
+    width:10rem;
+    height:3.3rem;
+    text-align: center;
+    line-height: 3.3rem;
+    color: #ffffff;
+}
+.oBox li a{
+    color: #ffffff;
+}
+.close{
+    display: none;
+    position: fixed;
+    left:10%;
+    top:5%;
+    z-index:50;
+    color: #ffffff;
+}
